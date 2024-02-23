@@ -10,37 +10,54 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const closeBtn = document.querySelectorAll(".close");
+const closeBtn = document.querySelector(".close");
 const formData = document.querySelectorAll(".formData");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+// launch modal form function
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.classList.remove("hide");
 }
 
-// Fermer la modal lorsqu'on appuie sur le bouton .close
-closeBtn.forEach((span) => span.addEventListener("click", closeModal));
+// Close modal event
+closeBtn.addEventListener("click", closeModal);
 
-// Fonction pour fermer la modal
+// Close modal form function
 function closeModal() {
-  modalbg.style.display = "none";
+  modalbg.classList.add("hide");
 }
 
+//First Name
+var spanFirst = document.getElementById("validmessagefirst");
+spanLast.innerText = "Veuillez saisir un nom valide (au moins 2 caractères).";
+spanFirst.style.display = "none";
 
-  //create an element p after every input in the form to display the error message  
+//Last Name
+var spanLast = document.getElementById("validmessagelas");
+spanLast.innerText = "Veuillez saisir un nom valide (au moins 2 caractères).";
+spanLast.style.display = "none";
 
+//Email
+var spanEmail = document.getElementById("validmessagemail");
+spanEmail.innerText = "Veuillez saisir une adresse électronique valide.";
+spanEmail.style.display = "none";
 
+//Quantity
+var spanQuantity = document.getElementById("validmessagequantity");
+spanQuantity.innerHTML = "Veuillez saisir une quantité";
+spanQuantity.style.display = "block";
 
+//Location
+var spanLocation = document.getElementById("validmessagelocation");
+spanLocation.innerText = "Veuillez saisir un lieu";
+spanLocation.style.display = "none";
 
-
-  var p = document.createElement("p");
-  p.innerText = "Veuillez saisir un prénom valide (au moins 2 caractères).";
-  var form = document.querySelector('.formData');
- form.appendChild(p);
- p.style.display = "none";  
+//CGV
+var spanCGV = document.getElementById("validmessagecgv");
+spanCGV.innerText = "Veuillez acceptez nos conditions d'utilisations";
+spanCGV.style.display = "none";
 
 function validate() {
   // Récupération des valeurs des champs
@@ -48,54 +65,58 @@ function validate() {
   var lastName = document.getElementById("last").value;
   var email = document.getElementById("email").value;
   var quantity = document.getElementById("quantity").value;
-  var locationChecked = document.querySelector('input[name="location"]:checked');
+  var locationChecked = document.querySelector(
+    'input[name="location"]:checked'
+  );
   var checkbox1 = document.getElementById("checkbox1");
-
-
- 
 
   // Validation du champ Prénom
   if (firstName.length < 2) {
-      alert("Veuillez saisir un prénom valide (au moins 2 caractères).");
-      //passer le p en display block
-      p.style.display = "block";
-      return false;
+    spanFirst.innerText =
+      "Veuillez saisir un prénom valide (au moins 2 caractères).";
+    //passer le p en display block
+    spanFirst.style.display = "block";
+    return false;
   }
 
   // Validation du champ Nom
   if (lastName.length < 2) {
-      alert("Veuillez saisir un nom de famille valide (au moins 2 caractères).");
-      return false;
+    spanLast.style.display = "block";
+    return false;
   }
 
   // Validation de l'adresse électronique
   var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
-      alert("Veuillez saisir une adresse électronique valide.");
-      return false;
+    spanEmail.style.display = "block";
+    return false;
   }
 
   // Validation du champ Nombre de concours
   if (isNaN(quantity) || quantity < 0 || quantity > 99) {
-      alert("Veuillez saisir un nombre de concours valide (entre 0 et 99).");
-      return false;
+    spanQuantity.style.display = "block";
+    return false;
   }
 
   // Validation du choix de la ville
   if (!locationChecked) {
-      alert("Veuillez sélectionner une ville.");
-      return false;
+    spanLocation.style.display = "block";
+    return false;
   }
 
   // Validation de la case des conditions générales
   if (!checkbox1.checked) {
-      alert("Veuillez accepter les conditions générales.");
-      return false;
+    spanCgv.style.display = "block";
+    return false;
   }
 
   // Si toutes les validations passent, le formulaire est valide
   return true;
 }
 
+const submit = document.querySelector('[type="submit"]');
 
-
+submit.addEventListener("click", (e) => {
+  e.preventDefault;
+  validate();
+});

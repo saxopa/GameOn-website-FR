@@ -50,9 +50,9 @@
         <button class="btn-signup modal-btn">
           je m'inscris
         </button>
-      </div>
+      </div>''
 
-      <div class="bground">
+      <div class="bground hide">
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
@@ -60,18 +60,19 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
             >
+            <span id="msgConfirmation"></span>
               <div
                 class="formData">
                 <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
-                  id="first"
+                  id="first" 
                   name="first"
                   minlength="2"
                 /><br>
+                <span id="validmessagefirst"></span>
               </div>
               <div
                 class="formData">
@@ -82,6 +83,7 @@
                   id="last"
                   name="last"
                 /><br>
+                <span id="validmessagelas"></span>
               </div>
               <div
                 class="formData">
@@ -92,6 +94,8 @@
                   id="email"
                   name="email"
                 /><br>
+                <span id="validmessagemail"></span>
+
               </div>
               <div
                 class="formData">
@@ -102,10 +106,12 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <span id="validmessagebirth"></span>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <span id="validmessagequantity"></span>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
@@ -177,6 +183,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <span id="validmessagelocation"></span>
               </div>
 
               <div
@@ -192,6 +199,7 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
+                <span id="validmessagecgv"></span>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
