@@ -438,7 +438,8 @@ input[data-error]::after {
 .hero-headline {
   font-size: 6rem;
   font-weight: normal;
-  white-space: nowrap;
+  white-space: wrap;
+
 }
 .hero-text {
   width: 146%;
@@ -529,4 +530,10 @@ footer {
 
 .hide{
   display: none;
+}
+
+
+.warnmsg{
+  font-size: small;
+  color: #f00;
 }

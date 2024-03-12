@@ -11,7 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelector(".close");
-const formData = document.querySelectorAll(".formData");
+const formData = document.querySelector(".formData");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -31,7 +31,7 @@ function closeModal() {
 
 //First Name
 var spanFirst = document.getElementById("validmessagefirst");
-spanLast.innerText = "Veuillez saisir un nom valide (au moins 2 caractères).";
+spanFirst.innerText = "Veuillez saisir un nom valide (au moins 2 caractères).";
 spanFirst.style.display = "none";
 
 //Last Name
@@ -106,7 +106,7 @@ function validate() {
 
   // Validation de la case des conditions générales
   if (!checkbox1.checked) {
-    spanCgv.style.display = "block";
+    spanCGV.style.display = "block";
     return false;
   }
 
@@ -115,8 +115,24 @@ function validate() {
 }
 
 const submit = document.querySelector('[type="submit"]');
-
+const message = document.getElementById('messageReussite')
+const form = document.getElementById('formulaire')
+// Écouteur d'événement sur le clic du bouton de soumission
 submit.addEventListener("click", (e) => {
-  e.preventDefault;
-  validate();
+  e.preventDefault()
+  spanFirst.style.display = "none"
+  spanLast.style.display = "none"
+  spanEmail.style.display = "none"
+  spanCGV.style.display = "none"
+  spanLocation.style.display = "none"
+  spanQuantity.style.display = "none"
+  //validate()
+  if(validate()){
+    form.classList.add("hide")
+    message.classList.remove("hide")
+
+  }
+  
+  
 });
+
