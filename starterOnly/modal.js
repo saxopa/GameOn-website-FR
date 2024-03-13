@@ -70,69 +70,68 @@ function validate() {
   );
   var checkbox1 = document.getElementById("checkbox1");
 
+  
+  let validationOK = true;
+
   // Validation du champ Prénom
   if (firstName.length < 2) {
     spanFirst.innerText =
       "Veuillez saisir un prénom valide (au moins 2 caractères).";
     //passer le p en display block
     spanFirst.style.display = "block";
-    return false;
+    validationOK = false;
   }
 
   // Validation du champ Nom
   if (lastName.length < 2) {
     spanLast.style.display = "block";
-    return false;
+    validationOK = false;
   }
 
   // Validation de l'adresse électronique
   var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
     spanEmail.style.display = "block";
-    return false;
+    validationOK = false;
   }
 
   // Validation du champ Nombre de concours
   if (isNaN(quantity) || quantity < 0 || quantity > 99) {
     spanQuantity.style.display = "block";
-    return false;
+    validationOK = false;
   }
 
   // Validation du choix de la ville
   if (!locationChecked) {
     spanLocation.style.display = "block";
-    return false;
+    validationOK = false;
   }
 
   // Validation de la case des conditions générales
   if (!checkbox1.checked) {
     spanCGV.style.display = "block";
-    return false;
+    validationOK = false;
   }
 
   // Si toutes les validations passent, le formulaire est valide
-  return true;
+  return validationOK;
 }
 
 const submit = document.querySelector('[type="submit"]');
-const message = document.getElementById('messageReussite')
-const form = document.getElementById('formulaire')
+const message = document.getElementById("messageReussite");
+const form = document.getElementById("formulaire");
 // Écouteur d'événement sur le clic du bouton de soumission
 submit.addEventListener("click", (e) => {
-  e.preventDefault()
-  spanFirst.style.display = "none"
-  spanLast.style.display = "none"
-  spanEmail.style.display = "none"
-  spanCGV.style.display = "none"
-  spanLocation.style.display = "none"
-  spanQuantity.style.display = "none"
+  e.preventDefault();
+  spanFirst.style.display = "none";
+  spanLast.style.display = "none";
+  spanEmail.style.display = "none";
+  spanCGV.style.display = "none";
+  spanLocation.style.display = "none";
+  spanQuantity.style.display = "none";
   //validate()
-  if(validate()){
-    form.classList.add("hide")
-    message.classList.remove("hide")
-
+  if (validate()) {
+    form.classList.add("hide");
+    message.classList.remove("hide");
   }
-  
-  
 });
-
