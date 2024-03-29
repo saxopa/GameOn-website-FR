@@ -30,38 +30,38 @@ function closeModal() {
 }
 
 //First Name
-var spanFirst = document.getElementById("validmessagefirst");
+const spanFirst = document.getElementById("validmessagefirst");
 spanFirst.innerText = "Veuillez saisir un nom valide (au moins 2 caractères).";
 spanFirst.style.display = "none";
 
 //Last Name
-var spanLast = document.getElementById("validmessagelas");
+const spanLast = document.getElementById("validmessagelas");
 spanLast.innerText = "Veuillez saisir un nom valide (au moins 2 caractères).";
 spanLast.style.display = "none";
 
 //Email
-var spanEmail = document.getElementById("validmessagemail");
+const spanEmail = document.getElementById("validmessagemail");
 spanEmail.innerText = "Veuillez saisir une adresse électronique valide.";
 spanEmail.style.display = "none";
 
 //Age
-var spanAge = document.getElementById("validmessagebirth");
+const spanAge = document.getElementById("validmessagebirth");
 spanAge.innerText = "Veuillez saisir un âge réel.";
 spanAge.style.display = "none";
 
 
 //Quantity
-var spanQuantity = document.getElementById("validmessagequantity");
+const spanQuantity = document.getElementById("validmessagequantity");
 spanQuantity.innerHTML = "Veuillez saisir une quantité";
 spanQuantity.style.display = "none";
 
 //Location
-var spanLocation = document.getElementById("validmessagelocation");
+const spanLocation = document.getElementById("validmessagelocation");
 spanLocation.innerText = "Veuillez saisir un lieu";
 spanLocation.style.display = "none";
 
 //CGV
-var spanCGV = document.getElementById("validmessagecgv");
+const spanCGV = document.getElementById("validmessagecgv");
 spanCGV.innerText = "Veuillez acceptez nos conditions d'utilisations";
 spanCGV.style.display = "none";
 
@@ -96,7 +96,7 @@ function validate() {
   }
 
   // Validation de l'adresse électronique
-  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
     spanEmail.style.display = "block";
     validationOK = false;
