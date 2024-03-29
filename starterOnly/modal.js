@@ -44,10 +44,16 @@ var spanEmail = document.getElementById("validmessagemail");
 spanEmail.innerText = "Veuillez saisir une adresse électronique valide.";
 spanEmail.style.display = "none";
 
+//Age
+var spanAge = document.getElementById("validmessagebirth");
+spanAge.innerText = "Veuillez saisir un âge réel.";
+spanAge.style.display = "none";
+
+
 //Quantity
 var spanQuantity = document.getElementById("validmessagequantity");
 spanQuantity.innerHTML = "Veuillez saisir une quantité";
-spanQuantity.style.display = "block";
+spanQuantity.style.display = "none";
 
 //Location
 var spanLocation = document.getElementById("validmessagelocation");
@@ -64,6 +70,7 @@ function validate() {
   var firstName = document.getElementById("first").value;
   var lastName = document.getElementById("last").value;
   var email = document.getElementById("email").value;
+  var birthdate = document.getElementById("birthdate").value;
   var quantity = document.getElementById("quantity").value;
   var locationChecked = document.querySelector(
     'input[name="location"]:checked'
@@ -95,8 +102,14 @@ function validate() {
     validationOK = false;
   }
 
+  //validation age birthdate inferieur a 110 ans
+  if (birthdate < "1914-01-01" || birthdate > "2020-01-01") {
+    spanAge.style.display = "block";
+    validationOK = false;
+  }
+
   // Validation du champ Nombre de concours
-  if (isNaN(quantity) || quantity < 0 || quantity > 99) {
+  if (quantity < 0 || quantity > 99) {
     spanQuantity.style.display = "block";
     validationOK = false;
   }
@@ -126,6 +139,7 @@ submit.addEventListener("click", (e) => {
   spanFirst.style.display = "none";
   spanLast.style.display = "none";
   spanEmail.style.display = "none";
+  spanAge.style.display = "none";
   spanCGV.style.display = "none";
   spanLocation.style.display = "none";
   spanQuantity.style.display = "none";
