@@ -1,5 +1,5 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  let x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelector(".close");
+const closeBtnFermer = document.querySelector(".closeFermer");
 const formData = document.querySelector(".formData");
 
 // launch modal event
@@ -23,10 +24,13 @@ function launchModal() {
 
 // Close modal event
 closeBtn.addEventListener("click", closeModal);
+closeBtnFermer.addEventListener("click", closeModal);
+
 
 // Close modal form function
 function closeModal() {
   modalbg.classList.add("hide");
+  window.location.reload();
 }
 
 //First Name
@@ -52,7 +56,7 @@ spanAge.style.display = "none";
 
 //Quantity
 const spanQuantity = document.getElementById("validmessagequantity");
-spanQuantity.innerHTML = "Veuillez saisir une quantité";
+spanQuantity.innerHTML = "Veuillez saisir une quantité comprise entre 0 et 99";
 spanQuantity.style.display = "none";
 
 //Location
@@ -67,15 +71,15 @@ spanCGV.style.display = "none";
 
 function validate() {
   // Récupération des valeurs des champs
-  var firstName = document.getElementById("first").value;
-  var lastName = document.getElementById("last").value;
-  var email = document.getElementById("email").value;
-  var birthdate = document.getElementById("birthdate").value;
-  var quantity = document.getElementById("quantity").value;
-  var locationChecked = document.querySelector(
+  const firstName = document.getElementById("first").value;
+  const lastName = document.getElementById("last").value;
+  const email = document.getElementById("email").value;
+  const birthdate = document.getElementById("birthdate").value;
+  const quantity = document.getElementById("quantity").value;
+  const locationChecked = document.querySelector(
     'input[name="location"]:checked'
   );
-  var checkbox1 = document.getElementById("checkbox1");
+  const checkbox1 = document.getElementById("checkbox1");
 
   
   let validationOK = true;
@@ -109,10 +113,13 @@ function validate() {
   }
 
   // Validation du champ Nombre de concours
-  if (quantity < 0 || quantity > 99) {
+  if (quantity===null || quantity==="" || quantity < 0 || quantity > 99) {
     spanQuantity.style.display = "block";
     validationOK = false;
   }
+
+  //obliger le champs quantité à être rempli même si c'est avec une valeur = 0
+
 
   // Validation du choix de la ville
   if (!locationChecked) {
@@ -147,5 +154,6 @@ submit.addEventListener("click", (e) => {
   if (validate()) {
     form.classList.add("hide");
     message.classList.remove("hide");
+    message.classList.add("messagereussitestyle")
   }
 });

@@ -528,12 +528,23 @@ footer {
   }
 }
 
-.hide{
-  display: none;
-}
+
 
 
 .warnmsg{
   font-size: small;
   color: #f00;
+}
+.messagereussitestyle{
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top:20vh;
+
+
+
+}
+.hide{
+  display: none;
 }
